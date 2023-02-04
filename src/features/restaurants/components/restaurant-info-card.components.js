@@ -3,7 +3,14 @@ import styled from "styled-components/native";
 import { Text, View, StyleSheet } from "react-native";
 import { Avatar, Button, Card } from "react-native-paper";
 
-const Title = styled.Text`
+const RestaurantCard = styled(Card)`
+  background_color: white;
+`;
+const RestaurantCardCover = styled(Card.Cover)`
+  padding: 14px;
+  background_color: white;
+`;
+const Title = styled(Text)`
   padding: 16px;
 `;
 
@@ -20,21 +27,11 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     isClosedTemporarily,
   } = restaurant;
   return (
-    <Card elevation={5} style={styles.card}>
-      <Card.Cover key={name} style={styles.cover} source={{ uri: photos[0] }} />
+    <RestaurantCard elevation={5}>
+      <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Title>{name}</Title>
 
       <Card.Content></Card.Content>
-    </Card>
+    </RestaurantCard>
   );
 };
-
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: "white",
-  },
-  cover: {
-    marginHorizontal: 10,
-    marginVertical: 5,
-  },
-});
