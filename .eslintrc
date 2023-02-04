@@ -1,0 +1,12 @@
+{
+  "extends": "@react-native",
+  "rules": {
+    "quotes": [2, "double"]
+  },
+  "prettier/prettier": [
+    "error",
+    {
+      "endOfLine": "auto"
+    }
+  ]
+}
