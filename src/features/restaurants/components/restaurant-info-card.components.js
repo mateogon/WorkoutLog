@@ -1,43 +1,19 @@
 import React from "react";
 import styled from "styled-components/native";
-import { Text, View, Image } from "react-native";
-import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
-const RestaurantCard = styled(Card)`
-  background_color: ${(props) => props.theme.colors.ui.quaternary};
-`;
-const RestaurantCardCover = styled(Card.Cover)`
-  padding: ${(props) => props.theme.space[3]};
-  background_color: ${(props) => props.theme.colors.ui.quaternary};
-`;
-const Info = styled(View)`
-  padding: ${(props) => props.theme.space[3]};
-`;
-const Title = styled(Text)`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.body};
-  color: ${(props) => props.theme.colors.ui.primary};
-`;
-const Address = styled(Text)`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.caption};
-  color: ${(props) => props.theme.colors.ui.primary};
-`;
-const Rating = styled(View)`
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
-`;
-const Icons = styled(View)`
-  flex-direction: row;
-  padding-vertical: ${(props) => props.theme.space[3]};
-  padding-right: ${(props) => props.theme.space[1]};
-`;
-const OpenStatus = styled(View)`
-  flex-direction: row;
-`;
+import {
+  RestaurantCard,
+  RestaurantCardCover,
+  Info,
+  Rating,
+  IconContainer,
+  OpenStatus,
+  Icon,
+} from "./restaurant-info-card.styles";
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = "Some Restaurant",
@@ -55,8 +31,8 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     <RestaurantCard elevation={5}>
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
-        <Title>{name} </Title>
-        <Icons>
+        <Text variant="label">{name} </Text>
+        <IconContainer>
           <Rating>
             {ratingArray.map(() => (
               <SvgXml xml={star} width={20} height={20} />
@@ -64,19 +40,18 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
           </Rating>
           <OpenStatus>
             {isClosedTemporarily ? (
-              <Text variant="label" style={{ color: "red" }}>
-                CLOSED TEMPORARILY
-              </Text>
+              <Text variant="error">CLOSED TEMPORARILY</Text>
             ) : null}
-            <View style={{ paddingLeft: 8 }} />
-            {isOpenNow ? <SvgXml xml={open} width={20} height={20} /> : null}
-            <View style={{ paddingLeft: 10 }} />
-            <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+            <Spacer position="left" size="large">
+              {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
+            </Spacer>
+            <Spacer position="left" size="large">
+              <Icon source={{ uri: icon }} />
+            </Spacer>
           </OpenStatus>
-        </Icons>
-        <Address>{address} </Address>
+        </IconContainer>
+        <Text variant="caption">{address}</Text>
       </Info>
-      <Card.Content></Card.Content>
     </RestaurantCard>
   );
 };
