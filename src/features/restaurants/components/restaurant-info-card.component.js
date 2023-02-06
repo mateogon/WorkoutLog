@@ -16,15 +16,15 @@ import {
 } from "./restaurant-info-card.styles";
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
-    name = "Some Restaurant",
+    name,
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos = [
       "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudCUyMGZvb2R8ZW58MHx8MHx8&w=1000&q=80",
     ],
     address = "100 some random street",
-    isOpenNow = true,
+    isOpenNow,
     rating = 4,
-    isClosedTemporarily = true,
+    isClosedTemporarily,
   } = restaurant;
   const ratingArray = Array.from(new Array(Math.floor(rating)));
   return (
