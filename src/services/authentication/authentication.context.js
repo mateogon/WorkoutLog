@@ -20,12 +20,12 @@ const getErrorMessage = (errorCode) => {
 };
 
 export const AuthenticationContext = createContext();
-
+const auth = getAuth();
 export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState([]);
   const [user, setUser] = useState(null);
-  const auth = getAuth();
+
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setUser(user);
