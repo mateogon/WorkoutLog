@@ -52,7 +52,11 @@ export const RestaurantDetail = ({ route }) => {
   const handleDessertsPress = () => setDessertsExpanded(!dessertsExpanded);
   const listMenuItems = (menu) => {
     return menu.map((item) => (
-      <List.Item title={item.name} description={"$" + item.price} />
+      <List.Item
+        key={item.name}
+        title={item.name}
+        description={"$" + item.price}
+      />
     ));
   };
   const [expanded, setExpanded] = React.useState(true);

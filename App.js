@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
+import { initializeApp, getApps } from "firebase/app";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
-import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
-import { LocationContextProvider } from "./src/services/location/location.context";
-import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
+import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
+const firebaseConfig = {
+  apiKey: "AIzaSyDylpW4bHcFyskVxT2a0AWAoD3EWAN6ufo",
+  authDomain: "mealstogo-22457.firebaseapp.com",
+  projectId: "mealstogo-22457",
+  storageBucket: "mealstogo-22457.appspot.com",
+  messagingSenderId: "729510753679",
+  appId: "1:729510753679:web:80d39cb9af276b6ca8c7fa",
+  measurementId: "G-9GQMFE6EPR",
+};
+// Initialize Firebase
+if (!getApps().length) {
+  initializeApp(firebaseConfig);
+}
 
 import {
   useFonts as useOswald,
@@ -27,16 +44,13 @@ export default function App() {
   if (!oswaldLoaded || !latoLoaded) {
     return null;
   }
+
   return (
     <>
       <ThemeProvider theme={theme}>
-        <FavouritesContextProvider>
-          <LocationContextProvider>
-            <RestaurantsContextProvider>
-              <Navigation />
-            </RestaurantsContextProvider>
-          </LocationContextProvider>
-        </FavouritesContextProvider>
+        <AuthenticationContextProvider>
+          <Navigation />
+        </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
