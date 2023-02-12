@@ -5,7 +5,7 @@ import { RestaurantsNavigator } from "./restaurants.navigator";
 
 import { MapScreen } from "../../features/map/screens/map.screen";
 import { SettingsNavigator } from "./settings.navigator";
-
+import { WorkoutScreen } from "../../features/workout/screens/workout.screen";
 import { RestaurantsContextProvider } from "../../services/restaurants/restaurants.context";
 import { LocationContextProvider } from "../../services/location/location.context";
 import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
@@ -14,6 +14,7 @@ const TAB_ICONS = {
   Restaurants: [Ionicons, "md-restaurant"],
   Map: [Ionicons, "map"],
   Settings: [Ionicons, "settings"],
+  Workout: [Ionicons, "barbell-outline"],
 };
 const TAB_ICONS_COLORS = {
   Active: "tomato",
@@ -44,7 +45,9 @@ export const AppNavigator = () => {
             initialRouteName="Restaurants"
             screenOptions={createScreenOptions}
           >
+            <Tab.Screen name="Workout" component={WorkoutScreen} />
             <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
+
             <Tab.Screen name="Map" component={MapScreen} />
             <Tab.Screen name="Settings" component={SettingsNavigator} />
           </Tab.Navigator>

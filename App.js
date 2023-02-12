@@ -10,13 +10,12 @@ import {
 
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 const firebaseConfig = {
-  apiKey: "AIzaSyDylpW4bHcFyskVxT2a0AWAoD3EWAN6ufo",
-  authDomain: "mealstogo-22457.firebaseapp.com",
-  projectId: "mealstogo-22457",
-  storageBucket: "mealstogo-22457.appspot.com",
-  messagingSenderId: "729510753679",
-  appId: "1:729510753679:web:80d39cb9af276b6ca8c7fa",
-  measurementId: "G-9GQMFE6EPR",
+  apiKey: "AIzaSyAKeTdmbRzaT1_Y46kCXuTSfmiTqEohLYo",
+  authDomain: "workoutlog-50404.firebaseapp.com",
+  projectId: "workoutlog-50404",
+  storageBucket: "workoutlog-50404.appspot.com",
+  messagingSenderId: "282392291791",
+  appId: "1:282392291791:web:401a9686f84e40a3a48aba",
 };
 // Initialize Firebase
 if (!getApps().length) {
